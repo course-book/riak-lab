@@ -274,7 +274,7 @@ Riak supports a command that you can use to debug your configuration:
 # Warm Up Activity:
 Now that you have read through a quick introduction and how to setup
 your own Riak cluster, head over to our
-[Warm Up Activity](https://github.com/course-book/riak-lab/blob/master/WarmUpActivity.md.)
+[Warm Up Activity](https://github.com/course-book/riak-lab/blob/master/WarmUpActivity.md).
 
 # Resources
 ## Introduction
