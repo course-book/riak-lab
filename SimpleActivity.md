@@ -40,11 +40,11 @@ ads_bucket = my_client.bucket('ads')
 
 We can then represent a single ad the following way
 ```python
-ad = ads_bucket.net('ad1')
-ad.registers['description'].assign('some description')
-ad.registers['data'].assign('some data')
-ad.registers['author'].assign('some author')
-ad.store()
+ad1 = ads_bucket.new('ad1')
+ad1.registers['description'].assign('some description')
+ad1.registers['data'].assign('some data')
+ad1.registers['author'].assign('some author')
+ad1.store()
 ```
 
 Then you can loop and do all the ads in a given list.
@@ -73,9 +73,34 @@ users = users_bucket.new('user')
 users.add('user1') // Now we have a set containing a user1
 
 userinfo_bucket = my_client.bucket('user_info')
-user1 = userinfo_bucket.net('user1')
+user1 = userinfo_bucket.new('user1')
 user1.register['name'].assign('some name')
 user1.register['username'].assign('some username')
 ```
 
 Now we have a map containing a user's info that is stored in the users set.
+
+Next, we will query on user to find all ads this user created.
+
+The first thing you need to do is create a detail bucket to store the relation between user and ads, like what we did for redis.
+```python
+user1 = userinfo_bucket.get('user1').data // Get all info about user1
+ad1 = ads_bucket.get('ad1').data // Get all info about ad1
+username = user1['username']
+
+adsDetail_bucket = my_client.bucket('adsDetail') // Create a new bucket to store ads detail
+
+detail1 = ads_detail.new(username)
+detail1.registers['ads'].assign(ad1)
+detail1.store()
+
+```
+
+Then to query for the ads created by user1, we can do:
+```python
+result = adDetail_bucket.get('user1').data
+
+print(result['ads'])
+
+```
+
