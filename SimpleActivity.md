@@ -35,7 +35,7 @@ Let's see what this would look like:
 
 First create a bucket, we'll use this to store all of our ad objects
 ```python
-ads_bucket = my_client.bucket_type('map_bucket').bucket('ads')
+ads_bucket = my_client.bucket('ads')
 ```
 
 We can then represent a single ad the following way
@@ -67,12 +67,12 @@ We can mirror all of these activities for sets. We would just have to change the
 
 To store the user's info, we can do
 ```python
-user_bucket = my_client.bucket_type('sets').bucket('users')
+user_bucket = my_client.bucket('users')
 
 users = users_bucket.new('user')
 users.add('user1') // Now we have a set containing a user1
 
-userinfo_bucket = my_client.bucket_type('map_bucket').bucket('user_info')
+userinfo_bucket = my_client.bucket('user_info')
 user1 = userinfo_bucket.net('user1')
 user1.register['name'].assign('some name')
 user1.register['username'].assign('some username')
