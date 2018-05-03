@@ -76,6 +76,9 @@ TransactionInfo: {
   Price : value,
   Date : date
 }
+```
+
+```python
 riak_obj = client.bucket('transactions').new('transactioninfo', data = TransactionInfo)
 riak_obj.store()
 ```
