@@ -18,6 +18,8 @@ Try the exercise yourself and check our solution below!
 
 
 
+
+# Solution
 We've done it in the javascript driver to show the versatility of the platform.
 Content is the incoming data from the server.
 ```
