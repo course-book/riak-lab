@@ -57,8 +57,8 @@ users who may have shared tids. Desgin a new system that will allow this to occu
 
 ## Solution 2 riak
 ```
-Consider simply having an object ID be the concatenation of user.credit.cardId and the specific tid and return
-the json object that looks something like this
+Consider simply having an object ID be the concatenation of user.credit.cardId
+and the specific tid and return the json object that looks something like this
 
 TransactionInfo: {
   ObjectsPurchased : [ ],
