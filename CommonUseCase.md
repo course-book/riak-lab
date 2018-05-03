@@ -52,8 +52,8 @@ riak_obj.delete()
 
 Now consider that all the modeling is pretty easy as long as you do everything with json! 
 
-Consider that transaction IDs are only unique to a card number! A bank obviously has multiple users who may have shared tids.
-Desgin a new system that will allow this to occur.
+Consider that transaction IDs are only unique to a card number! A bank obviously has multiple
+users who may have shared tids. Desgin a new system that will allow this to occur.
 
 ## Solution 2 riak
 ```
