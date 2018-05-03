@@ -1,29 +1,30 @@
-## Following On Riak
+# Following On Riak
 In this activity we will describe something a little more advanced for
 interested students to apply themselves to. We will discuss an application
 known as user session storage/management. This is something that riak
 is commonly used for so we figured it would be perhaps the best activity
 for this.
 
-
-# Prompt
+## Prompt
 Keeping track of user data is a serious task for most modern applications.
 You can reduce the problem quite a bit by taking a sort of simplified
 approach to what user data is. For example you could only count how often
 a user creates, deletes, updates, fetches, logins, etc. These are all simple
 counters that Riak is well suited to handle. 
 
+1. Keep track of a user's login number
+2. Keep track of a user's number of submitted updates
+3. Keep track of a user's number of submitted creates
+4. Keep track of a user's number of submitted fetches
+5. Keep track of a user's number of submitted deletes
 
 Try the exercise yourself and check our solution below!
 
-
-
-
-# Solution
+## Solution
 We've done it in the javascript driver to show the versatility of the platform.
 Content is the incoming data from the server.
-```
-const client = new Riak.Client(433-09.csse.rose-hulman.edu, (error, c) =>
+```javascript
+const client = new Riak.Client(IP, (error, c) => // Remember to use the IP of your server!
 {
     if (error) {
           this.logger.error(`[ RIAK ] failed to connect: ${error}`);
@@ -123,7 +124,6 @@ const client = new Riak.Client(433-09.csse.rose-hulman.edu, (error, c) =>
   }
 
   updateCounter(logTag, client, datum, resolve, reject) {
-    // NOTE: resolve is a Promise resolve callback.
     client.updateCounter(datum, (error, result) => {
       let status;
       if (error) {
