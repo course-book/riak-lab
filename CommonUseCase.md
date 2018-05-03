@@ -1,65 +1,76 @@
-# Common Use Case Example
+# Banking Excercise
+We will consider how to model a simplistic bank and its interactions. We will model a `user`
+and interactions a user must perform with the bank. 
 
+A `user` must have some reference to their balance, their credit cards, and their profile information. 
+Your task is to implement a bank that can handle CRUD operations with these types of users in mind.
 
-## Considering the following problem
-Let's consider modeling a bank. We've got to model a user and we need to model aspects of that user.
-Users have money values and a profile that stores certain information they have. Additionally you will
-probably want to model credit cards and how they relate to users. Implement some regular operations:
-create, update, delete.
+You must be able to:
+1. Create a `user`.
+2. Create a credit card for a `user`.
+3. Create transactions for a given credit card.
+4. Read the balance of a user given a unique `user` ID (UUID).
+5. Read the `user`'s profile information (`name` and `address`).
+6. Update a `user`'s profile information (`name` and `address`).
+7. Update the `user`'s balance.
+8. Delete a credit card for a `user`.
 
-
-
-
-## Solution
+### Solution
+One way you might create a user object represented by the JSON string
 ```
-Consider a user object being represented by the json:
-user {
+user = {
   uuid : uuid
   money : value,
   profile : {
     name : name,
     address : address
   }
-  credit : {
-    cardId : number,
-    transactionIds : [ ]
-  }
+  credit : [
+    {
+      cardId : number,
+      transactionIds : [ ... ]
+    }
+  ]
 }
+```
 
-
-This has been written in Python, you might have some things different depending on your driver.
-
+We will be using the python drivers. Here is how you might implement the solution:
+```python
+import riak
 client = riak.RiakClient()
 
-Creating a user:
-riak_obj = client.bucket('users').new('user', data = user)
+# Create a user
+riak_obj = client.bucket('users').new('user', data=user)
 riak_obj.store()
-  
-  
-Now that our bank has some customers we can work on updating them
-Since riak is a simple key store and our data is json this is pretty easy! We can do the following
+```
 
+Now that our bank has users, we can work on updating properties of the user.
+Since riak is, at its essence, a key-value store and our data is a JSON, we can do the following:
+```python
 riak_obj = client.bucket('users').get(uuid)
-riak_obj.data['profile.name'] = "johnson"
+riak_obj.data['profile.name'] = 'johnson' 
 riak_obj.store()
+```
+You can imagine how this might extend to other needed updates. 
+Just remember that you must first get the user object.
 
-Since it's json you can see how this will extend to almost any type of update query. Just remember to get it!
-
-Furthermore we can consider deletion:
+To delete a user we do the following
+```python
 riak_obj = client.bucket('users').get(uuid)
 riak_obj.delete()
 ```
 
-Now consider that all the modeling is pretty easy as long as you do everything with json! 
+## Added Constraint
+Now consider that all the modeling is pretty easy as long as you do everything with JSON.
 
-Consider that transaction IDs are only unique to a card number! A bank obviously has multiple
-users who may have shared tids. Desgin a new system that will allow this to occur.
+What if we had an additional constraint that transaction IDs are only unique to a given card number.
+Design a system that supports this constraint.
 
-## Solution 2 riak
-```
+### Constrained Solution
 Consider simply having an object ID be the concatenation of user.credit.cardId
 and the specific tid and return the json object that looks something like this
 
+```
 TransactionInfo: {
   ObjectsPurchased : [ ],
   Price : value,
@@ -67,6 +78,6 @@ TransactionInfo: {
 }
 riak_obj = client.bucket('transactions').new('transactioninfo', data = TransactionInfo)
 riak_obj.store()
+```
 
 Operations are then similar to the above for user.
-```
