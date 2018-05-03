@@ -47,7 +47,8 @@ riak_obj.store()
 Now that our bank has users, we can work on updating properties of the user.
 Since riak is, at its essence, a key-value store and our data is a JSON, we can do the following:
 ```python
-riak_obj = client.bucket('users').get(uuid)
+riak_obj = client.bucket('users').get('user') // Remember that 'user' is whatever you put
+in the first argument of the new query!
 riak_obj.data['profile.name'] = 'johnson' 
 riak_obj.store()
 ```
