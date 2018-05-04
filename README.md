@@ -11,7 +11,7 @@ backed by Riak.
 1. Read the [Introduction](https://github.com/course-book/riak-lab/blob/master/Introduction.md)
 2. Work on the [Warm Up Activity](https://github.com/course-book/riak-lab/blob/master/WarmUpActivity.md)
 3. Work on the [Bank Exercise](https://github.com/course-book/riak-lab/blob/master/BankingExcercise.md)
-4. Work on the [User Session Exercise](https://github.com/course-book/riak-lab/blob/master/FollowOnActivity.md)
+4. Work on the [User Session Exercise](https://github.com/course-book/riak-lab/blob/master/UserSessionExercise.md)
 
 # Credits
 David Lam, Zachary Taylor, and Krystal Yang
