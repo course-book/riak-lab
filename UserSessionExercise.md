@@ -1,4 +1,4 @@
-# Following On Riak
+# User Session Exercise
 In this activity we will describe something a little more advanced for
 interested students to apply themselves to. We will discuss an application
 known as user session storage/management. This is something that riak
