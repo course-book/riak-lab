@@ -12,6 +12,8 @@ backed by Riak.
 2. Work on the [Warm Up Activity](https://github.com/course-book/riak-lab/blob/master/WarmUpActivity.md)
 3. Work on the [Bank Exercise](https://github.com/course-book/riak-lab/blob/master/BankingExcercise.md)
 4. Work on the [User Session Exercise](https://github.com/course-book/riak-lab/blob/master/UserSessionExercise.md)
+5. Read about the things to watch out for while usuing Riak [ListOfIssues](https://github.com/course-book/riak-lab/blob/master/ListOfIssues.md)
+
 
 # Credits
 David Lam, Zachary Taylor, and Krystal Yang
