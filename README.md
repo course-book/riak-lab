@@ -13,6 +13,7 @@ backed by Riak.
 3. Work on the [Bank Exercise](https://github.com/course-book/riak-lab/blob/master/BankingExcercise.md)
 4. Work on the [User Session Exercise](https://github.com/course-book/riak-lab/blob/master/UserSessionExercise.md)
 5. Read about the things to watch out for while usuing Riak [ListOfIssues](https://github.com/course-book/riak-lab/blob/master/ListOfIssues.md)
+6. Check out the documentation! [Our Fork](https://github.com/course-book/basho_docs) or the [Official Documentation Repository](https://github.com/basho/basho_docs) or their [documentation page](http://docs.basho.com/)
 
 
 # Credits
